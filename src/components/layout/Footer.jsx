@@ -6,7 +6,9 @@ const navigation = {
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
     { name: 'Projects', href: '/projects' },
-    { name: 'Materials', href: '/materials' },
+    { name: 'Basic Package', href: '/packages/basic' },
+    { name: 'Classic Package', href: '/packages/classic' },
+    { name: 'Premium Package', href: '/packages/premium' },
   ],
   services: [
     { name: 'Architectural Design', href: '/services/architectural-design' },

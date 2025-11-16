@@ -146,15 +146,31 @@ export default function About() {
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={valuesInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
+                initial={{ opacity: 0, y: 30, scale: 0.8 }}
+                animate={valuesInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 100
+                }}
+                whileHover={{ 
+                  y: -10,
+                  transition: { duration: 0.2 }
+                }}
+                className="text-center group cursor-pointer"
               >
-                <div className="w-16 h-16 bg-brand-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <motion.div 
+                  className="w-16 h-16 bg-brand-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl"
+                  whileHover={{ 
+                    scale: 1.1,
+                    rotate: 360
+                  }}
+                  transition={{ duration: 0.5 }}
+                >
                   <value.icon className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-brand-900 mb-4">
+                </motion.div>
+                <h3 className="text-xl font-semibold text-brand-900 mb-4 group-hover:text-brand-600 transition-colors duration-300">
                   {value.title}
                 </h3>
                 <p className="text-muted leading-relaxed">
@@ -198,17 +214,34 @@ export default function About() {
               >
                 {/* Image */}
                 <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                  <div className="relative group">
-                    <div className="aspect-[4/5] overflow-hidden rounded-2xl">
-                      <img
+                  <motion.div 
+                    className="relative group"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-xl">
+                      <motion.img
                         src={member.image}
                         alt={member.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        className="w-full h-full object-cover"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.7 }}
                       />
                     </div>
                     {/* Decorative element */}
-                    <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-accent rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                  </div>
+                    <motion.div 
+                      className="absolute -bottom-6 -right-6 w-24 h-24 bg-accent rounded-full opacity-20"
+                      animate={{ 
+                        scale: [1, 1.1, 1],
+                        opacity: [0.2, 0.3, 0.2]
+                      }}
+                      transition={{ 
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                  </motion.div>
                 </div>
 
                 {/* Content */}

@@ -183,7 +183,12 @@ export default function Contact() {
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   {/* Personal Information */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <motion.div 
+                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.1 }}
+                  >
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         First Name *
@@ -191,10 +196,16 @@ export default function Contact() {
                       <input
                         type="text"
                         {...register('firstName', { required: 'First name is required' })}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all duration-300 hover:border-brand-400"
                       />
                       {errors.firstName && (
-                        <p className="mt-1 text-sm text-red-600">{errors.firstName.message}</p>
+                        <motion.p 
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="mt-1 text-sm text-red-600"
+                        >
+                          {errors.firstName.message}
+                        </motion.p>
                       )}
                     </div>
 
@@ -205,13 +216,19 @@ export default function Contact() {
                       <input
                         type="text"
                         {...register('lastName', { required: 'Last name is required' })}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all duration-300 hover:border-brand-400"
                       />
                       {errors.lastName && (
-                        <p className="mt-1 text-sm text-red-600">{errors.lastName.message}</p>
+                        <motion.p 
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="mt-1 text-sm text-red-600"
+                        >
+                          {errors.lastName.message}
+                        </motion.p>
                       )}
                     </div>
-                  </div>
+                  </motion.div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -374,10 +391,12 @@ export default function Contact() {
                   </div>
 
                   {/* Submit Button */}
-                  <button
+                  <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-brand-600 hover:bg-brand-700 disabled:bg-gray-400 text-white font-semibold py-4 px-6 rounded-lg transition-colors flex items-center justify-center space-x-2"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full bg-brand-600 hover:bg-brand-700 disabled:bg-gray-400 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
                   >
                     {isSubmitting ? (
                       <>
@@ -390,7 +409,7 @@ export default function Contact() {
                         <span>Send Message</span>
                       </>
                     )}
-                  </button>
+                  </motion.button>
 
                   <p className="text-sm text-gray-500 text-center">
                     By submitting this form, you agree to our privacy policy and terms of service.

@@ -10,9 +10,7 @@ import Services from './pages/Services'
 import ServiceDetail from './pages/ServiceDetail'
 import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
-import MaterialsHome from './pages/MaterialsHome'
-import MaterialCategory from './pages/MaterialCategory'
-import MaterialDetail from './pages/MaterialDetail'
+import Package from './pages/Package'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import Contact from './pages/Contact'
@@ -40,9 +38,7 @@ function AppContent() {
           <Route path="/services/:slug" element={<ServiceDetail />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:slug" element={<ProjectDetail />} />
-          <Route path="/materials" element={<MaterialsHome />} />
-          <Route path="/materials/:category" element={<MaterialCategory />} />
-          <Route path="/materials/:category/:slug" element={<MaterialDetail />} />
+          <Route path="/packages/:packageType" element={<Package />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/contact" element={<Contact />} />

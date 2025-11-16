@@ -113,21 +113,31 @@ export default function Projects() {
       {/* Filter Tabs */}
       <section className="py-8 bg-white border-b border-gray-200" ref={ref}>
         <div className="container-custom">
-          <div className="flex flex-wrap justify-center gap-4">
-            {categories.map(category => (
-              <button
+          <motion.div 
+            className="flex flex-wrap justify-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {categories.map((category, index) => (
+              <motion.button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-full font-medium transition-colors ${
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   selectedCategory === category
-                    ? 'bg-brand-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-brand-600 text-white shadow-lg'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md'
                 }`}
               >
                 {category}
-              </button>
+              </motion.button>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -143,28 +153,45 @@ export default function Projects() {
                 <motion.div
                   key={project.id}
                   layout
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow overflow-hidden group"
+                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -20, scale: 0.9 }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: index * 0.1,
+                    type: "spring",
+                    stiffness: 100
+                  }}
+                  whileHover={{ 
+                    y: -8,
+                    transition: { duration: 0.2 }
+                  }}
+                  className="bg-white rounded-lg shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden group cursor-pointer"
                 >
                   <Link to={`/projects/${project.slug}`}>
                     <div className="relative overflow-hidden">
-                      <img
+                      <motion.img
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+                        className="w-full h-64 object-cover"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.4 }}
                       />
-                      <div className="absolute top-4 left-4">
-                        <span className="bg-brand-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <motion.div 
+                        className="absolute top-4 left-4"
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: index * 0.1 + 0.2 }}
+                      >
+                        <span className="bg-brand-600 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
                           {project.category}
                         </span>
-                      </div>
+                      </motion.div>
                     </div>
                     
                     <div className="p-6">
-                      <h3 className="text-xl font-semibold text-brand-900 mb-2 group-hover:text-brand-600 transition-colors">
+                      <h3 className="text-xl font-semibold text-brand-900 mb-2 group-hover:text-brand-600 transition-colors duration-300">
                         {project.title}
                       </h3>
                       <div className="text-muted text-sm space-y-1">
