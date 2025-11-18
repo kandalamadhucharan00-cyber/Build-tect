@@ -189,9 +189,14 @@ export default function Package() {
                             <h3 className="font-semibold text-gray-900 mb-1 text-sm transition-colors hover:text-brand-600">
                               {material.name}
                             </h3>
-                            <p className="text-xs text-gray-600">
+                            <p className="text-xs text-gray-600 mb-1">
                               {material.spec}
                             </p>
+                            {material.price && (
+                              <p className="text-xs font-medium text-brand-600">
+                                {material.price}
+                              </p>
+                            )}
                           </div>
                         </div>
                       </div>

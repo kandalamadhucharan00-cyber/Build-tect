@@ -344,7 +344,7 @@ export const packagesData = {
     ],
     materials: {
       structure: [
-        { name: 'White Cement', spec: 'Premium Grade', price: 'Upto 600 per Bag', image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
+        { name: 'White Cement', spec: 'Premium Grade', image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
         { name: 'AAC Blocks', spec: 'Lightweight Premium', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
         { name: 'M-Sand', spec: 'Washed & Graded', image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
         { name: 'TMT Steel Bars', spec: 'Fe 550D Grade', image: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
@@ -409,4 +409,3 @@ export const packagesData = {
     }
   }
 }
-
