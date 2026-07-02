@@ -1,12 +1,10 @@
-import Hero from '../components/home/Hero'
-import ServicesPreview from '../components/home/ServicesPreview'
+import ScrollExperience from '../components/home/ScrollExperience'
 import Testimonials from '../components/home/Testimonials'
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <ServicesPreview />
+      <ScrollExperience />
       <Testimonials />
     </>
   )

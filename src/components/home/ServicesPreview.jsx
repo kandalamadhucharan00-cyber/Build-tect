@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer'
 import { Compass, Hammer, Wrench, Package } from 'lucide-react'
 import { useState } from 'react'
 
-const services = [
+export const services = [
   {
     icon: Compass,
     title: 'Architectural Design',
@@ -31,7 +31,7 @@ const services = [
   }
 ]
 
-function ServiceCard({ service, index, inView }) {
+export function ServiceCard({ service, index, inView }) {
   const [isHovered, setIsHovered] = useState(false)
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)

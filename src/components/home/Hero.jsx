@@ -4,7 +4,7 @@ import { ArrowRight, Play } from 'lucide-react'
 import { useRef, useEffect, useState } from 'react'
 import NavigationLink from '../ui/NavigationLink'
 
-export default function Hero() {
+export default function Hero({ background = true }) {
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -32,19 +32,26 @@ export default function Hero() {
   return (
     <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-28 md:pt-32 lg:pt-20">
       {/* Animated Background */}
-      <motion.div 
-        className="absolute inset-0 z-0"
-        style={{ y, scale }}
-      >
-        <div className="relative w-full h-full">
-          <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-            alt="Modern architectural building"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/60"></div>
-          
-          {/* Floating Geometric Elements */}
+      {background && (
+        <motion.div
+          className="absolute inset-0 z-0"
+          style={{ y, scale }}
+        >
+          <div className="relative w-full h-full">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+              alt="Modern architectural building"
+              className="w-full h-full object-cover"
+              loading="eager"
+              decoding="async"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/60"></div>
+          </div>
+        </motion.div>
+      )}
+
+      {/* Floating Geometric Elements */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
           <motion.div
             className="absolute top-20 left-20 w-32 h-32 border border-white/20 rounded-lg"
             animate={{
@@ -84,8 +91,7 @@ export default function Hero() {
               y: { duration: 0.5 }
             }}
           />
-        </div>
-      </motion.div>
+      </div>
 
       {/* Content */}
       <motion.div 
